@@ -1,98 +1,51 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 
-import { useEffect, useState } from "react";
-
-const heroSlides = [
-  {
-    id: 0,
-    primaryColor: "bg-[#f2443a]",
-    secondaryColor: "bg-[#1d2a3b]",
-  },
-  {
-    id: 1,
-    primaryColor: "bg-amber-400",
-    secondaryColor: "bg-zinc-900",
-  },
-  {
-    id: 2,
-    primaryColor: "bg-emerald-500",
-    secondaryColor: "bg-slate-900",
-  },
-];
+import Image from "next/image";
 
 export function Hero() {
-  const [activeSlide, setActiveSlide] = useState(0);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setActiveSlide((prev) => (prev + 1) % heroSlides.length);
-    }, 3000);
-
-    return () => clearInterval(interval);
-  }, []);
-
   return (
-    <section className="bg-[#f5f5f7]">
-      <div className="mx-auto flex min-h-[calc(100vh-140px)] max-w-6xl flex-col items-center gap-12 px-6 py-20 md:flex-row md:items-center">
-        {/* Columna izquierda: texto */}
-        <div className="flex-1 space-y-6 text-center md:text-left">
-          <p className="text-xs font-medium uppercase tracking-[0.25em] text-zinc-500">
-            Velas artesanales · Cava Candles
-          </p>
-          <h1 className="text-4xl font-semibold tracking-tight text-zinc-900 md:text-5xl">
-            <span className="text-[#f2443a]">Luz</span> que acompaña
-            <br />
-            cada uno de tus <span className="text-zinc-800">rituales.</span>
-          </h1>
-          <p className="mx-auto max-w-xl text-sm text-zinc-600 md:mx-0 md:text-base">
-            Velas hechas a mano, aromas cálidos y diseños minimalistas para
-            transformar tu espacio en un lugar más íntimo, pausado y tuyo.
-          </p>
-          <div className="flex flex-col items-center gap-3 sm:flex-row sm:justify-start">
-            <button className="h-11 rounded-full bg-[#f2443a] px-7 text-sm font-semibold text-white shadow-sm transition hover:bg-[#e03a31]">
-              Ver velas destacadas
-            </button>
-            <button className="h-11 rounded-full border border-zinc-300 bg-white px-7 text-sm font-medium text-zinc-800 transition hover:border-zinc-500">
-              Explorar colección completa
-            </button>
-          </div>
-        </div>
+    <section className="relative -mt-16 min-h-screen pt-16 bg-zinc-950 text-white">
+      {/* Fondo con imagen de producto */}
+      <div className="absolute inset-0">
+        <Image
+          src="/img/DSC05664.jpg"
+          alt="Colección de velas escultóricas de Cava Candles sobre mesa de madera"
+          fill
+          priority
+          className="object-cover"
+        />
+        {/* Overlay para asegurar contraste del texto */}
+        <div className="absolute inset-0 bg-gradient-to-b from-zinc-950/85 via-zinc-950/80 to-zinc-950/92" />
+      </div>
 
-        {/* Columna derecha: mockup de productos en carrusel */}
-        <div className="flex-1">
-          <div className="relative mx-auto h-[340px] w-full max-w-lg">
-            {/* Halo de luz */}
-            <div className="pointer-events-none absolute inset-0 -z-10 translate-y-6">
-              <div className="mx-auto h-56 w-56 rounded-full bg-[#f2443a]/12 blur-3xl" />
-            </div>
+      {/* Contenido centrado */}
+      <div className="relative z-10 mx-auto flex min-h-[calc(100vh-80px)] max-w-5xl flex-col items-center justify-center px-6 py-20 text-center">
+        <p className="mb-4 text-xs font-medium uppercase tracking-[0.25em] text-zinc-300">
+          Velas artesanales · Cava Candles
+        </p>
 
-            {heroSlides.map((slide, index) => {
-              const isActive = index === activeSlide;
+        <h1 className="mb-4 text-4xl font-semibold tracking-tight md:text-5xl lg:text-6xl">
+          Hogares que se iluminan,
+          <br />
+          rituales que perduran.
+        </h1>
 
-              return (
-                <div
-                  key={slide.id}
-                  className={`absolute inset-0 transition-opacity duration-700 ease-out ${
-                    isActive ? "opacity-100" : "opacity-0"
-                  }`}
-                >
-                  {/* Tarjeta posterior (izquierda) */}
-                  <div
-                    className={`absolute top-1/2 left-[35%] h-80 w-60 -translate-x-1/2 -translate-y-1/2 origin-center rounded-3xl shadow-[0_30px_70px_rgba(15,23,42,0.75)] -rotate-12 ${slide.secondaryColor}`}
-                  />
+        <p className="mb-8 max-w-2xl text-sm text-zinc-200 md:text-base">
+          Velas escultóricas hechas a mano, con formas únicas y acabados suaves,
+          pensadas para transformar tu espacio en un refugio cálido, íntimo y
+          lleno de intención.
+        </p>
 
-                  {/* Tarjeta frontal (derecha) */}
-                  <div
-                    className={`absolute top-1/2 left-[65%] h-80 w-60 -translate-x-1/2 -translate-y-1/2 origin-center rounded-3xl shadow-[0_32px_80px_rgba(15,23,42,0.85)] rotate-12 ${slide.primaryColor}`}
-                  />
-                </div>
-              );
-            })}
-          </div>
+        <div className="flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
+          <button className="h-11 rounded-full bg-[#f2443a] px-8 text-sm font-semibold text-white shadow-lg shadow-[#f2443a]/30 transition hover:bg-[#e03a31] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#f2443a] focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-950">
+            Ver velas destacadas
+          </button>
+          <button className="text-sm font-medium text-zinc-100 underline-offset-4 hover:underline">
+            Explorar colección completa
+          </button>
         </div>
       </div>
     </section>
   );
 }
-
-
