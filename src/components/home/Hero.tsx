@@ -5,7 +5,7 @@ import Image from "next/image";
 
 export function Hero() {
   return (
-    <section className="relative -mt-16 min-h-screen pt-16 bg-zinc-950 text-white">
+    <section className="relative -mt-24 min-h-screen pt-24 bg-zinc-950 text-white">
       {/* Fondo con imagen de producto */}
       <div className="absolute inset-0">
         <Image
@@ -20,7 +20,7 @@ export function Hero() {
       </div>
 
       {/* Contenido centrado */}
-      <div className="relative z-10 mx-auto flex min-h-[calc(100vh-80px)] max-w-5xl flex-col items-center justify-center px-6 py-20 text-center">
+      <div className="relative z-10 mx-auto flex min-h-[calc(100vh-96px)] max-w-5xl flex-col items-center justify-center px-6 py-20 text-center">
         <p className="mb-4 text-xs font-medium uppercase tracking-[0.25em] text-zinc-300">
           Velas artesanales · Cava Candles
         </p>

@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export function TopBar() {
   return (
-    <div className="w-full bg-[#f2443a] text-xs text-white">
+    <div className="relative z-50 w-full bg-black text-xs text-white">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-2">
         <p className="truncate">
           Contacto:{" "}
